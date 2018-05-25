@@ -8,12 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class EventController extends Controller
 {
     /**
-     * @Route("/event", name="event")
+     * @Route("/event/{name}", name="event")
      */
-    public function index()
+    public function index($name)
     {
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+        return $this->render('event/event.html.twig', [
         ]);
     }
 }
