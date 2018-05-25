@@ -61,7 +61,6 @@ class SingupController extends Controller
                     $this->getParameter('profilePicture_directory'),
                     $fileName
                 );
-#2 /home/lficheux/Development/24h/web/vendor/symfony/config/Resource
                 // updates the 'brochure' property to store the PDF file name
                 // instead of its contents
 
