@@ -19,13 +19,24 @@ use App\Entity\User;
 class EventController extends Controller
 {
     /**
-     * @Route("/event/{name}", name="event")
+     * @Route("/event/{url}", name="event")
      */
-    public function index($name)
-    {
-        return $this->render('event/event.html.twig', [
-        ]);
-    }
+     public function index($url)
+     {
+         $repository = $this->getDoctrine()->getRepository(Event::class);
+         $event = $repository->findOneBy([
+             'randomString' => $url
+         ]);
+
+         if (!$event) {
+             throw $this->createNotFoundException(
+                 'No product found for randomString : '.$url
+             );
+           }
+
+           return $this->render('event/event.html.twig', ['event'=>$event
+           ]);
+       }
 
     /** * @return string */
     private function generateUniqueFileName()
